@@ -7,21 +7,22 @@
  */
 
 namespace App\Controllers;
-
+use \Core\View;
 
 class Home extends \Core\Controller
 {
     public function indexAction(){
-        $var=9;
-        echo"Hello from the index action in the Home controller! $var";
+        //View::render('Home/index.php',['name'=>'Juan','colors'=>['red','green','blue']]);
+        View::renderTemplate('Home/index.html',['name'=>'Juan','colors'=>['red','green','blue']]);
+        
     }
     protected function before()
     {
-        echo("(before)");
-        return false;
+        //echo("(before)");
+        //return false;
     }
     protected function after()
     {
-        echo("(after)");
+        //echo("(after)");
     }
 }
