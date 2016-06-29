@@ -11,8 +11,6 @@ use \App\Models\Post;
 class Posts extends \Core\Controller
 {
     public function indexAction(){
-        //echo 'Hello from the index action in the Post controller!';
-        //echo "<h1>Query String Parameters: <pre>".htmlspecialchars(print_r($_GET,true))."</pre></h1>";
         $posts=Post::getAll();
         
         View::renderTemplate('Posts/index.html',['posts'=>$posts]);

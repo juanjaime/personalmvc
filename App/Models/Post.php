@@ -8,8 +8,6 @@
 
 namespace App\Models;
 use PDO;
-
-
 class Post extends \Core\Model
 {
     public static  function getAll(){

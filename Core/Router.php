@@ -21,11 +21,9 @@ class Router
         return $this->routes;
     }
     public function match($url){
-        //$reg_exp="/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/";
         foreach ($this->routes as $route =>$params)
         {
         if(preg_match($route,$url,$matches)) {
-           // $params = [];
             foreach ($matches as $key => $match) {
 
                 if (is_string($key)) {
@@ -46,7 +44,6 @@ class Router
         if ($this->match($url)){
             $controller = $this->params['controller'];
             $controller = $this->convertToStudlyCaps($controller);
-            //$controller= "App\Controllers\\$controller";
             $controller= $this->getNamespacce().$controller;
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);
