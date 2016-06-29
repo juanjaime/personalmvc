@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use  \Core\View;
+use \App\Models\Post;
 /**
  * Created by PhpStorm.
  * User: jmontemayor
@@ -12,7 +13,9 @@ class Posts extends \Core\Controller
     public function indexAction(){
         //echo 'Hello from the index action in the Post controller!';
         //echo "<h1>Query String Parameters: <pre>".htmlspecialchars(print_r($_GET,true))."</pre></h1>";
-        View::renderTemplate('Posts/index.html');
+        $posts=Post::getAll();
+        
+        View::renderTemplate('Posts/index.html',['posts'=>$posts]);
     }
     public function addNewAction(){
         echo 'Hello from the addNew action in the Post controller!';
