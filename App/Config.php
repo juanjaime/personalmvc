@@ -15,5 +15,6 @@ class Config
     const DB_NAME='personalmvc';
     const DB_USER='root';
     const DB_PASSWORD='';
+    const SHOW_ERRORS= false;
 
 }

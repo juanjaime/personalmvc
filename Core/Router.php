@@ -1,11 +1,12 @@
 <?php
+
 namespace Core;
-/**
+/*
  * Created by PhpStorm.
  * User: jmontemayor
  * Date: 28/06/2016
  * Time: 11:49 AM
- */
+*/
 class Router
 {
     protected $routes=[];
@@ -23,7 +24,7 @@ class Router
     public function match($url){
         foreach ($this->routes as $route =>$params)
         {
-        if(preg_match($route,$url,$matches)) {
+           if(preg_match($route,$url,$matches)) {
             foreach ($matches as $key => $match) {
 
                 if (is_string($key)) {
@@ -52,15 +53,15 @@ class Router
                 if (is_callable([$controller_object, $action])) {
                     $controller_object->$action();
                 } else {
-                    echo "Method $action (in controller $controller) not found";
+                    throw new \Exception("Method $action (in controller $controller) not found");
                 }
             }
             else{
-                    echo"Controller class $controller not found";
+                throw new \Exception("Controller class $controller not found");
                 }
             }
             else{
-                echo "No route matched.";
+                throw new \Exception("No route matched.",404);
 
             }
 
